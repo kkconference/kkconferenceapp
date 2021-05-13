@@ -33,7 +33,6 @@ dependencies:
   uuid: ^3.0.4
   dots_indicator: ^2.0.0
   google_fonts: ^2.0.0
-  dio: ^4.0.0
   url_launcher: ^6.0.0-nullsafety
   intl: ^0.17.0
   logger: ^1.0.0
