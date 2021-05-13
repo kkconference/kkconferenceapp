@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>999540194509-9sft48a0ujceib91ftv94ubdbmromjc9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.999540194509-9sft48a0ujceib91ftv94ubdbmromjc9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>999540194509-1oj6rcsfkhvaaml68pkvpks282arhndb.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBFaKcsKR-IFnKEblWlZaRYdZKHyqj0j7Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>999540194509</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.org.kkConferences</string>
+	<key>PROJECT_ID</key>
+	<string>kkconferences-2a145</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kkconferences-2a145.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:999540194509:ios:3843b341566d1ffda7bd84</string>
+</dict>
+</plist>
