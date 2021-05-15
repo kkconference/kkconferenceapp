@@ -2,7 +2,19 @@
 import 'package:flutter/material.dart';
 
 
+const appmode=test;
+const test="TEST";
+const live="LIVE";
+
+
 enum appstate{default_state,loading,loading_complete,crash}
+
+// authentications
+const razor_id_test="rzp_test_UBFgD17jFP8fM2";
+const razor_secret_test="sMBYfbXOf11GRbpEPASry5d6";
+
+const razor_id="rzp_test_UBFgD17jFP8fM2";
+const razor_secret="sMBYfbXOf11GRbpEPASry5d6";
 
 // users
 
@@ -16,7 +28,7 @@ const  String ADMIN="Admin";
 const login_credentials="login_credentials";
 const staff_credentials="staff_credentials";
 const activeUser_pref="active_user";
-const razor_key="rzp_test_O5hmsGbqbT4wk8";
+
 const phno="+91 8097700453";
 const email="kkconference8@gmail.com";
 const company_name="KK Conferences.";

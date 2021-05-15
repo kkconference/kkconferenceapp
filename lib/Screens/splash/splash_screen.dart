@@ -3,16 +3,17 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:kk_conferences/Screens/STAFF/AdminBookingScreen/day_wise_booking.dart';
 import 'package:kk_conferences/Screens/SignInScreen/signin.dart';
 import 'package:kk_conferences/Screens/splash/splash_helper.dart';
 import 'package:kk_conferences/api/firebase_clerk_api.dart';
+import 'package:kk_conferences/api/web_api/razorpay_payment.dart';
 import 'package:kk_conferences/global/Global.dart';
 import 'package:kk_conferences/global/constants.dart';
 import 'package:kk_conferences/model/customer.dart';
 import 'package:kk_conferences/model/staff_model.dart';
 import 'package:kk_conferences/utils/preference.dart';
 
-import '../AdminBookingScreen/day_wise_booking.dart';
 import '../SignUp/signup_user.dart';
 import '../HomeScreen/home_screen.dart';
 
@@ -65,6 +66,8 @@ class _SplashScreenState extends State<SplashScreen> {
 */
 
   performNavigate() async {
+    await RazorPayPayment().getPaymentDetails();
+
      await SplashHelper().initRoomInfo(context);
 
 

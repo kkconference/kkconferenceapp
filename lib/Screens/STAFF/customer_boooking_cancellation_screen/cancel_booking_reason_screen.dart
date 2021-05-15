@@ -47,7 +47,6 @@ class _CancelBookingReasonState extends State<CancelBookingReason> {
                 print(model.bookingId);
                 model.cancellationDescription=cancel_reason.text;
                 provider.performCancelBooking(model);
-
               },text: "Submit",))
         ],
       ),

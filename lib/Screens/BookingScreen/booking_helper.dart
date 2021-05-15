@@ -125,7 +125,7 @@ class BookingHelper {
   void openCheckout(int hourdifference, String description) async {
     amountPaidCurruntTransaction=(hourdifference*carrage.confressModel.price);
     var options = {
-      'key': razor_key,
+      'key': razor_id_test,
       'amount': (hourdifference*carrage.confressModel.price)*100, // price show here
       'name': '$company_name',
       'description': '$description',

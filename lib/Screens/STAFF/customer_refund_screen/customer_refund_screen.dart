@@ -4,14 +4,15 @@ import 'package:kk_conferences/global/Global.dart';
 import 'package:kk_conferences/model/booking_model.dart';
 import 'package:kk_conferences/widgets/drawer.dart';
 
-class CustomerRefund extends StatefulWidget {
-  const CustomerRefund({Key key}) : super(key: key);
+class CustomerCancellationRequest extends StatefulWidget {
+  static const classname="/CustomerCancellationRequest";
+  const CustomerCancellationRequest({Key key}) : super(key: key);
 
   @override
-  _CustomerRefundState createState() => _CustomerRefundState();
+  _CustomerCancellationRequestState createState() => _CustomerCancellationRequestState();
 }
 
-class _CustomerRefundState extends State<CustomerRefund> {
+class _CustomerCancellationRequestState extends State<CustomerCancellationRequest> {
   List<BookingModel> bookings=[];
 
   @override

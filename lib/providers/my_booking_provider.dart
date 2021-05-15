@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:kk_conferences/Screens/customer_boooking_cancellation_screen/cancel_booking_reason_screen.dart';
+import 'package:kk_conferences/Screens/STAFF/customer_boooking_cancellation_screen/cancel_booking_reason_screen.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
 import 'package:kk_conferences/api/firebase_clerk_api.dart';
 import 'package:kk_conferences/global/Global.dart';

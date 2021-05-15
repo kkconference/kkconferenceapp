@@ -133,11 +133,6 @@ class FirebaseMemberApi {
 /* Cancellaton steps here */
 
   Future<QuerySnapshot> deleteCancelBookingEntry(BookingModel model) async {
-
-
-
-
-
     return await FirebaseFirestore.instance
         .collection("Bookings")
         .where("bookingId", isEqualTo: model.bookingId)
@@ -152,8 +147,6 @@ class FirebaseMemberApi {
         .collection("CancelBookings")
         .add(model.toJson())
         .then((value) {});
-
-
   }
 
 

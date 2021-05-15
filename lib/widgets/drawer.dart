@@ -48,10 +48,24 @@ class _CommonDrawerState extends State<CommonDrawer> {
           title: Text("All Bookings"),
           trailing: Icon(Icons.arrow_forward),
         ),
+      if(Global.activeUser==CUSTOMER)
         ListTile(
           title: Text("Cancel Bookings"),
           trailing: Icon(Icons.arrow_forward),
         ),
+
+        if(Global.activeUser==ADMIN)
+          ListTile(
+            title: Text("Cancel Bookings"),
+            trailing: Icon(Icons.arrow_forward),
+            onTap: (){
+
+
+            },
+
+          ),
+
+
         ListTile( onTap: () async{
           Global.activeCustomer=null;
           Preference.remove(login_credentials);

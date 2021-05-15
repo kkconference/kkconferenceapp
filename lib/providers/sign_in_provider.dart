@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:kk_conferences/Screens/AdminBookingScreen/day_wise_booking.dart';
 import 'package:kk_conferences/Screens/HomeScreen/home_screen.dart';
+import 'package:kk_conferences/Screens/STAFF/AdminBookingScreen/day_wise_booking.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
 import 'package:kk_conferences/api/firebase_clerk_api.dart';
 import 'package:kk_conferences/global/Global.dart';

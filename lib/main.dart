@@ -15,7 +15,8 @@ import 'package:kk_conferences/providers/staff/sign_up_admin_provider.dart';
 import 'package:kk_conferences/utils/preference.dart';
 import 'package:kk_conferences/widgets/active_booking_items.dart';
 import 'package:provider/provider.dart';
-
+import 'Screens/customer_refund_screen/customer_refund_screen.dart';
+import 'utils.dart';
 import 'Screens/BookingScreen/booking_screen.dart';
 import 'Screens/HomeDetail/hotel_detail_page.dart';
 import 'Screens/SignUp/signup_user.dart';
@@ -72,7 +73,8 @@ class MyApp extends StatelessWidget {
         BookingScreen.classname: (context) => BookingScreen(),
         MyBookings.classname: (context) => MyBookings(),
         DayWiseBookings.classname: (context) => DayWiseBookings(),
-        CancelBookingReason.classname:(context)=>CancelBookingReason()
+        CancelBookingReason.classname:(context)=>CancelBookingReason(),
+        CustomerCancellationRequest.classname:(context)=>CustomerCancellationRequest()
       },
     );
   }
