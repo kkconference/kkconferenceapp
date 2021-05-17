@@ -24,13 +24,18 @@ abstract class Status {
 
 
 class ApiBase {
-  static Dio dio;
+  static  Dio dio;
+  static String auth = 'Basic '+base64Encode(utf8.encode('${appmode==test?razor_id_test:razor_id}:${appmode==test?razor_secret_test:razor_secret}'));
+  static Dio instance(){
+    if(dio==null){
+      dio=getDio();
+    }
+    return dio;
+  }
 
 
+   static Dio getDio() {
 
-  static Dio getDio() {
-
-    var auth = 'Basic '+base64Encode(utf8.encode('${appmode==test?razor_id_test:razor_id}:${appmode==test?razor_secret_test:razor_secret}'));
 
     dio = Dio(BaseOptions(
       baseUrl: base_url,
@@ -42,11 +47,10 @@ class ApiBase {
         requestHeader: true,
         requestBody: true,
         responseBody: true,
-        responseHeader: false,
+        responseHeader: true,
         error: true,
-        compact: true,
       ));
-    dio.options.headers["authorization"] = auth;
+     dio.options.headers["Authentication"]=auth;
     return dio;
   }
 
@@ -57,10 +61,10 @@ class ApiBase {
         Response resp = await callback();
         return APIResponse(
             completeResponse:resp.data,
-          /*  status: resp.data['status'],
-            result: resp.data['result'],
-            message: resp.data['message'] ?? "No Message");*/
-        );
+            status: resp.statusCode,
+            result: resp.statusMessage,
+            message: "");
+
       } else
         return APIResponse(
             message: "Something went wrong", status: Status.Failed, result: {});
@@ -68,16 +72,20 @@ class ApiBase {
       return APIResponse(
           message: "Check your internet connection",
           status: Status.Failed,
-          result: {});
+          result: {},
+
+      );
     } on DioError catch (error) {
       print("in dio error");
       print(error);
       print(error.response?.data);
       return APIResponse(
+          completeResponse:error.response?.data ,
           message: (error.response?.data ?? {})['message']?.toString() ??
               error.message,
           result: (error.response?.data ?? {})['result'] ?? {},
           status: error.response?.statusCode ?? Status.Failed);
+
 
     } catch (error) {
       print(error);

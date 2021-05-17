@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:kk_conferences/Screens/STAFF/customer_boooking_cancellation_screen/cancel_booking_reason_screen.dart';
+import 'package:kk_conferences/Screens/customer_boooking_cancellation_screen/cancel_booking_reason_screen.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
 import 'package:kk_conferences/api/firebase_clerk_api.dart';
 import 'package:kk_conferences/global/Global.dart';
 import 'package:kk_conferences/global/const_funcitons.dart';
 import 'package:kk_conferences/global/constants.dart';
 import 'package:kk_conferences/model/booking_model.dart';
+import 'package:kk_conferences/model/carrage_model.dart';
 import 'package:kk_conferences/utils/dialog.dart';
 import 'package:kk_conferences/utils/m_progress_indicator.dart';
 
@@ -43,9 +44,9 @@ class MyBookingProvider extends ChangeNotifier {
             context: context,
             title: "Confirmation Cancel",
             message: "Do you really like to cancel it take 7 days to refund",
-            buttontext: "Yes do it",
+            buttonOktext: "Yes do it",
             btnOkOnPress: () {
-              Navigator.of(context).pushNamed(CancelBookingReason.classname,arguments: mybookings[index]);
+              Navigator.of(context).pushNamed(CancelBookingReason.classname,arguments: Carrage(bookingModel: mybookings[index]),);
               //performCancelBooking(mybookings[index]);
               
               
@@ -62,7 +63,7 @@ class MyBookingProvider extends ChangeNotifier {
     snapshot.docs[0].reference.delete();
 
     MProgressIndicator.hide();
-
+    loadMyBookings();
   }
 
 }

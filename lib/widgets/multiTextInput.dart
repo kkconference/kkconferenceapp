@@ -9,9 +9,10 @@ class MultiLineTextInput extends StatelessWidget {
   String m_helperText;
   String m_labelText;
   TextEditingController controller;
+  TextInputType type;
 
   MultiLineTextInput(
-      {this.m_hintText="", this.m_helperText="", this.m_labelText="", this.controller});
+      {this.m_hintText="", this.m_helperText="", this.m_labelText="", this.controller,this.type=TextInputType.multiline});
 
 
 
@@ -21,7 +22,7 @@ class MultiLineTextInput extends StatelessWidget {
       controller: controller,
       minLines: 1,//Normal textInputField will be displayed
       maxLines: 5,// when user presses enter it will adapt to it
-      keyboardType: TextInputType.multiline,
+      keyboardType: type,
       decoration: new InputDecoration(
           border: new OutlineInputBorder(
               borderSide: new BorderSide(color:main_color)),

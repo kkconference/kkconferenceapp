@@ -9,14 +9,12 @@ class FirebaseMemberApi {
 
 //
   createroom() async {
-
     var uuid = Uuid();
-   RoomInfo info= RoomInfo(
-    price:400,
-    address:"unknown",
-    name:"Conference Room 1",
-   );
-
+    RoomInfo info = RoomInfo(
+      price: 400,
+      address: "unknown",
+      name: "Conference Room 1",
+    );
 
     info.roomNo = uuid.v4();
     FirebaseFirestore.instance
@@ -28,14 +26,13 @@ class FirebaseMemberApi {
 
   getRoomInfo(String roomid) async {
     return await FirebaseFirestore.instance
-        .collection("RoomPrice").where("roomNo",isEqualTo: roomid)
+        .collection("RoomPrice")
+        .where("roomNo", isEqualTo: roomid)
         .get()
         .then((value) {
-          return value;
+      return value;
     });
   }
-
-
 
   createStaffModel(StaffModel staffmodel) async {
     bool user_flag = await checkUserExist(staffmodel);
@@ -119,7 +116,7 @@ class FirebaseMemberApi {
     });
   }
 
-  Future<QuerySnapshot> approveBooking(BookingModel e) async{
+  Future<QuerySnapshot> approveBooking(BookingModel e) async {
     return await FirebaseFirestore.instance
         .collection("Bookings")
         .where("bookingId", isEqualTo: e.bookingId)
@@ -128,7 +125,6 @@ class FirebaseMemberApi {
       return value;
     });
   }
-
 
 /* Cancellaton steps here */
 
@@ -143,10 +139,50 @@ class FirebaseMemberApi {
   }
 
   Future<QuerySnapshot> addCancelBooking(BookingModel model) async {
-  return  FirebaseFirestore.instance
+    return FirebaseFirestore.instance
         .collection("CancelBookings")
         .add(model.toJson())
         .then((value) {});
+  }
+
+  Future<QuerySnapshot> getCancellationRequests() async {
+    return await FirebaseFirestore.instance
+        .collection("CancelBookings")
+        .where("iscancel", isEqualTo: false)
+        .orderBy("createdon", descending: true)
+        .limit(200)
+        .get()
+        .then((value) {
+      return value;
+    });
+  }
+
+  Future<QuerySnapshot> getBookingEntry(BookingModel model) async {
+    return await FirebaseFirestore.instance
+        .collection("CancelBookings")
+        .where("bookingId", isEqualTo: model.bookingId).limit(1)
+        .get()
+        .then((value) {
+      return value;
+    });
+  }
+
+  Future<QuerySnapshot> addRefundEntry(BookingModel model) async {
+    return FirebaseFirestore.instance
+        .collection("Refund")
+        .add(model.toJson())
+        .then((value) {});
+  }
+
+  Future<QuerySnapshot>  getCancellationBookingid(BookingModel model)async {
+    return await FirebaseFirestore.instance
+        .collection("CancelBookings")
+        .where("bookingId", isEqualTo: model.bookingId).limit(1)
+        .get()
+        .then((value) {
+      return value;
+    });
+
   }
 
 

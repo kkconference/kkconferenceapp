@@ -106,8 +106,8 @@ class _DayWiseBookingsState extends State<DayWiseBookings> {
                 child: ListView(
                   //shrinkWrap: true,
                   children: [
-                 /*   ...value.list_of_bookings.map((e) => BookingRequest(
-                          title: "Conference Room " + e.room ?? "",
+                    ...value.list_of_bookings.map((e) => BookingRequest(
+                          title: "${e.roomname ?? ""}",
                           amount: e.amount ?? "",
                           start_duration:
                               getDateWith12HrsFormat(e.bookingStartTime),
@@ -116,6 +116,7 @@ class _DayWiseBookingsState extends State<DayWiseBookings> {
                           date_of_booking: e.bookingDate,
                           onapprove: () {
                             DialogUtil(
+
                               btnOkOnPress: () {
                                 value.approveBookings(e);
                               },
@@ -130,7 +131,7 @@ class _DayWiseBookingsState extends State<DayWiseBookings> {
                           },
                           disableapprove: e.bookingStatus ?? false,
                         ))
-                 */ ],
+                  ],
                 ),
               ),
             ],

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:kk_conferences/Screens/STAFF/AdminBookingScreen/day_wise_booking.dart';
@@ -66,21 +65,23 @@ class _SplashScreenState extends State<SplashScreen> {
 */
 
   performNavigate() async {
-    await RazorPayPayment().getPaymentDetails();
+  //  await RazorPayPayment().getPaymentDetails();
 
      await SplashHelper().initRoomInfo(context);
 
 
-    String active_user_type=await Preference.getString(activeUser_pref);
+    Global.activeUser=await Preference.getString(activeUser_pref);
 
-    if(active_user_type == null){
+    if(Global.activeUser == null){
       print("user not logged in yet");
       Navigator.pushReplacementNamed(context, SignInPage.classname);
     }else{
 
-      if(active_user_type==CUSTOMER){
+      if(Global.activeUser==CUSTOMER){
         performCustomerNavigate();
-      }else if(active_user_type==CLERK){
+      }else if(Global.activeUser==CLERK){
+        performStaffNavigate();
+      }else if(Global.activeUser==ADMIN){
         performStaffNavigate();
       }
 

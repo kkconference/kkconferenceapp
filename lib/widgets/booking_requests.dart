@@ -7,6 +7,7 @@ class BookingRequest extends StatelessWidget {
   String start_duration;
   String end_duration;
   String date_of_booking;
+  String oncallText;
   Function onapprove;
   Function oncall;
   bool disableapprove;
@@ -18,6 +19,7 @@ class BookingRequest extends StatelessWidget {
       this.end_duration,
       this.onapprove,
         this.oncall,
+
       this.disableapprove = false, // true mean button grey and not active
       this.date_of_booking});
 

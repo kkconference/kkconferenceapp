@@ -13,8 +13,9 @@ enum appstate{default_state,loading,loading_complete,crash}
 const razor_id_test="rzp_test_UBFgD17jFP8fM2";
 const razor_secret_test="sMBYfbXOf11GRbpEPASry5d6";
 
-const razor_id="rzp_test_UBFgD17jFP8fM2";
-const razor_secret="sMBYfbXOf11GRbpEPASry5d6";
+
+const razor_id="rzp_live_S4N6Zif2cV2TvB";
+const razor_secret="FS0QWcP6UxOTTThvZkOV6liY";
 
 // users
 

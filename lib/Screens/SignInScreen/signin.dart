@@ -36,6 +36,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   GlobalKey<FormState> _key = GlobalKey();
 
+
+  @override
+  void initState() {
+    final provider = Provider.of<SignInProvider>(context,listen: false);
+    provider.defautUser=CUSTOMER;
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SignInProvider>(context);
@@ -300,18 +307,6 @@ class _SignInScreenState extends State<SignInScreen> {
           SizedBox(
             width: 5,
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, SignUpAdminScreen.classname);
-            },
-            child: Text(
-              "Sign up Admin",
-              style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  color: Colors.orange[200],
-                  fontSize: _large ? 19 : (_medium ? 17 : 15)),
-            ),
-          )
         ],
       ),
     );

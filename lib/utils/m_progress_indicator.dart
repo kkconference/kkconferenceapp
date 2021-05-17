@@ -17,7 +17,8 @@ class MProgressIndicator {
               valueColor: AlwaysStoppedAnimation(main_color),
             ),
           ),
-          Center(child: Text("Loading...",style: TextStyle(color: Colors.black54),))
+          SizedBox(height: 10,),
+          Center(child: Text("Loading...",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),))
         ],
       ),
     ),

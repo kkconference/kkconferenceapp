@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kk_conferences/global/const_funcitons.dart';
 import 'package:kk_conferences/global/constants.dart';
 import 'package:kk_conferences/providers/booking_screen_provider.dart';
@@ -265,11 +266,16 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 
+
+  FToast fToast;
+
   @override
   void initState() {
     final provider = Provider.of<BookingScreenProvider>(context, listen: false);
     provider.key = GlobalKey<ScaffoldState>();
   provider.todayMeetings=[];
+    fToast = FToast();
+    fToast.init(context);
   }
 
   void dispose() {

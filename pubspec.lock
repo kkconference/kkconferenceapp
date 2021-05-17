@@ -195,6 +195,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_sparkline:
+    dependency: "direct main"
+    description:
+      name: flutter_sparkline
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
+  flutter_staggered_grid_view:
+    dependency: "direct main"
+    description:
+      name: flutter_staggered_grid_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.0"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -225,7 +239,7 @@ packages:
       name: google_fonts
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
   http:
     dependency: transitive
     description:
@@ -282,6 +296,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  overlay_support:
+    dependency: "direct main"
+    description:
+      name: overlay_support
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.1"
   path:
     dependency: "direct main"
     description:

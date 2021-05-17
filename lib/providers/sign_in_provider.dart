@@ -100,9 +100,9 @@ class SignInProvider extends ChangeNotifier {
 
       showMessage(scaffoldkey, result.msg);
       Global.activeStaff = result.staffModel;
-      Global.activeUser = CLERK;
-      Preference.setString(staff_credentials, jsonEncode(result.staffModel));
-      Preference.setString(activeUser_pref, CLERK);
+      Global.activeUser = result.staffModel.authority;
+     await Preference.setString(staff_credentials, jsonEncode(result.staffModel));
+     await Preference.setString(activeUser_pref, Global.activeUser);
       print("name of active staffmember is ${Global.activeStaff.email}");
       Navigator.of(context)
           .pushNamedAndRemoveUntil(DayWiseBookings.classname, (route) => false);

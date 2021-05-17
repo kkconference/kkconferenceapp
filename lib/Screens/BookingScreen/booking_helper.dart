@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
+import 'package:kk_conferences/api/web_api/razorpay_payment.dart';
 import 'package:kk_conferences/global/Global.dart';
 import 'package:kk_conferences/global/const_funcitons.dart';
 import 'package:kk_conferences/global/constants.dart';
@@ -12,6 +13,7 @@ import 'package:kk_conferences/model/carrage_model.dart';
 import 'package:kk_conferences/providers/booking_screen_provider.dart';
 import 'package:kk_conferences/providers/my_booking_provider.dart';
 import 'package:kk_conferences/utils/dialog.dart';
+import 'package:kk_conferences/utils/m_progress_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:uuid/uuid.dart';
@@ -125,7 +127,7 @@ class BookingHelper {
   void openCheckout(int hourdifference, String description) async {
     amountPaidCurruntTransaction=(hourdifference*carrage.confressModel.price);
     var options = {
-      'key': razor_id_test,
+      'key': appmode==test?razor_id_test:razor_id,
       'amount': (hourdifference*carrage.confressModel.price)*100, // price show here
       'name': '$company_name',
       'description': '$description',
@@ -143,17 +145,15 @@ class BookingHelper {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response)async {
-    print("resp data: ${response.paymentId} ${response.orderId} ${response.signature}");
-    final provider=Provider.of<BookingScreenProvider>(context,listen: false);
-    provider.showTodayMettings(date, carrage);
-    provider.notifyListeners();
+   // MProgressIndicator.show(context);
 
-    Fluttertoast.showToast(
-        msg: "SUCCESS: " + response.paymentId, timeInSecForIosWeb: 4);
-    startTime = TimeOfDay(hour: startTime.hour, minute: startTime.minute + 1);
-    var uuid = Uuid();
-   await FireBaseCustomersApi().addBookingEntery(
-        model: BookingModel(
+      print("resp data: ${response.paymentId} ${response.orderId} ${response.signature}");
+      final provider=Provider.of<BookingScreenProvider>(context,listen: false);
+      provider.showTodayMettings(date, carrage);
+      provider.notifyListeners();
+      startTime = TimeOfDay(hour: startTime.hour, minute: startTime.minute + 1);
+      var uuid = Uuid();
+      BookingModel model=BookingModel(
           bookingDate: getFirebaseFormatDate(date),
           bookingStartTime: getDatewithTime(date, startTime),
           bookingEndTime: getDatewithTime(date, endTime),
@@ -171,7 +171,14 @@ class BookingHelper {
           paymentId: response.paymentId,
           orderId: response.orderId,
           signature: response.signature
-        ));
+      );
+      await FireBaseCustomersApi().addBookingEntery(
+          model: model);
+      await RazorPayPaymentApi().capturePayment(model);
+    try{  }catch(e){
+      MProgressIndicator.hide();
+    }
+
 
   }
 

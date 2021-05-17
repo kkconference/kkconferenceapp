@@ -9,11 +9,11 @@ class DialogUtil {
   BuildContext context;
   String message;
   String title;
-  String buttontext;
+  String buttonOktext;
   Function btnOkOnPress;
   Function btnCancelOnPress;
 
-  DialogUtil({this.context, this.message, this.title, this.buttontext,this.btnCancelOnPress,this.btnOkOnPress});
+  DialogUtil({this.context, this.message, this.title, this.buttonOktext,this.btnCancelOnPress,this.btnOkOnPress});
 
   showErrorDialog() {
     AwesomeDialog(
@@ -30,7 +30,7 @@ class DialogUtil {
   showSuccessDialog() {
     AwesomeDialog(
       context: context,
-      dialogType: DialogType.ERROR,
+      dialogType: DialogType.SUCCES,
       animType: AnimType.BOTTOMSLIDE,
       title: title,
       desc: message,
@@ -46,7 +46,7 @@ class DialogUtil {
         dialogType: DialogType.WARNING,
         animType: AnimType.BOTTOMSLIDE,
         title: title,
-        btnOkText: buttontext,
+        btnOkText: buttonOktext,
         desc: message,
         btnCancelOnPress:btnCancelOnPress,
         btnOkOnPress:btnOkOnPress,
