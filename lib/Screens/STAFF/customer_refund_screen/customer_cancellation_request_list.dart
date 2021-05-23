@@ -36,7 +36,7 @@ class _CustomerCancellationRequestState extends State<CustomerCancellationReques
   Widget build(BuildContext context) {
     cancellationRequest.context=context;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("Cancellation Requests"),),
       drawer: Drawer(
         child: CommonDrawer(
           username: Global.activeStaff.name,
@@ -62,6 +62,7 @@ class _CustomerCancellationRequestState extends State<CustomerCancellationReques
                   },
                   onapprove: () {
                     DialogUtil(
+                      btnCancelOnPress: (){},
                       btnOkOnPress: () {
                         cancellationRequest.onapprovecancellation(e);
                       },

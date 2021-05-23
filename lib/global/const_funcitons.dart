@@ -69,3 +69,8 @@ getBookingRegistrationNumberUsingTime() {
 getBookingfromDateinMillisecondsFormat(DateTime dateTime) {
   return dateTime.millisecondsSinceEpoch;
 }
+
+getSeconds(DateTime dateTime){
+  return dateTime.timeZoneOffset.inSeconds;
+}
+

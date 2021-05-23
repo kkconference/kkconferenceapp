@@ -24,7 +24,7 @@ class FirebaseMemberApi {
     return StaffResult(status: 1, msg: "User Created successfully");
   }
 
-  getRoomInfo(String roomid) async {
+  Future<QuerySnapshot> getRoomInfo(String roomid) async {
     return await FirebaseFirestore.instance
         .collection("RoomPrice")
         .where("roomNo", isEqualTo: roomid)
@@ -183,6 +183,18 @@ class FirebaseMemberApi {
       return value;
     });
 
+  }
+
+  Future<QuerySnapshot> getPaymentDetails(String date)async {
+
+    return await FirebaseFirestore.instance
+        .collection("Bookings")
+        .where("bookingDate", isEqualTo: date).where("bookingStatus", isEqualTo: true)
+        .orderBy("createdon",descending: false)
+        .get()
+        .then((value) {
+      return value;
+    });
   }
 
 

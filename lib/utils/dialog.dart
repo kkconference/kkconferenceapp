@@ -34,7 +34,7 @@ class DialogUtil {
       animType: AnimType.BOTTOMSLIDE,
       title: title,
       desc: message,
-      btnCancelOnPress: () {},
+      btnCancelOnPress: btnCancelOnPress,
       btnOkOnPress: () {},
     )..show();
   }

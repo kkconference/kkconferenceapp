@@ -103,35 +103,38 @@ class _DayWiseBookingsState extends State<DayWiseBookings> {
                 thickness: 2,
               ),
               Expanded(
-                child: ListView(
-                  //shrinkWrap: true,
-                  children: [
-                    ...value.list_of_bookings.map((e) => BookingRequest(
-                          title: "${e.roomname ?? ""}",
-                          amount: e.amount ?? "",
-                          start_duration:
-                              getDateWith12HrsFormat(e.bookingStartTime),
-                          end_duration:
-                              getDateWith12HrsFormat(e.bookingEndTime),
-                          date_of_booking: e.bookingDate,
-                          onapprove: () {
-                            DialogUtil(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
 
-                              btnOkOnPress: () {
-                                value.approveBookings(e);
-                              },
-                              context: context,
-                              message:
-                                  "Do you approve the same customer are reach at customer location. ",
-                              title: "Did customer visit on site?",
-                            ).showWarningDialog();
-                          },
-                          oncall: () {
-                            value.performCall(e);
-                          },
-                          disableapprove: e.bookingStatus ?? false,
-                        ))
-                  ],
+                      ...value.list_of_bookings.map((e) => BookingRequest(
+                        title: "${e.roomname ?? ""}",
+                        amount: e.amount ?? "",
+                        start_duration:
+                        getDateWith12HrsFormat(e.bookingStartTime),
+                        end_duration:
+                        getDateWith12HrsFormat(e.bookingEndTime),
+                        date_of_booking: e.bookingDate,
+                        onapprove: () {
+                          DialogUtil(
+
+                            btnOkOnPress: () {
+                              value.approveBookings(e);
+                            },
+                            context: context,
+                            message:
+                            "Do you approve the same customer are reach at customer location. ",
+                            title: "Did customer visit on site?",
+                          ).showWarningDialog();
+                        },
+                        oncall: () {
+                          value.performCall(e);
+                        },
+                        disableapprove: e.bookingStatus ?? false,
+                      ))
+
+                    ],
+                  ),
                 ),
               ),
             ],

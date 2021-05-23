@@ -134,7 +134,8 @@ class BookingHelper {
       'prefill': {'contact': ' $phno', 'email': '$email'},
       'external': {
         'wallets': ['paytm']
-      }
+      },
+      'notes':[Global.activeCustomer.toJson()]
     };
 
     try {
@@ -174,7 +175,7 @@ class BookingHelper {
       );
       await FireBaseCustomersApi().addBookingEntery(
           model: model);
-      await RazorPayPaymentApi().capturePayment(model);
+     // await RazorPayPaymentApi().capturePayment(model);
     try{  }catch(e){
       MProgressIndicator.hide();
     }

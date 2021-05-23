@@ -48,7 +48,7 @@ class BookingRequest extends StatelessWidget {
                 ),
                 Container(
                   height: 150,
-                  child: Expanded(
+                  child: Container(
                     child: Container(
                       padding: EdgeInsets.all(5),
                       child: Column(

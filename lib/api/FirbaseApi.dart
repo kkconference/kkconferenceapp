@@ -110,4 +110,17 @@ class FireBaseCustomersApi {
     });
   }
 
+  getCancellationRequests() async{
+    return await FirebaseFirestore.instance
+        .collection("CancelBookings")
+          .where("bookingUserId", isEqualTo: Global.activeCustomer.customerId)
+        .orderBy("createdon",descending: true)
+        .limit(200).get()
+        .then((value) {
+      return value;
+    });
+
+
+  }
+
 }

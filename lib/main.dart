@@ -5,19 +5,22 @@ import 'package:kk_conferences/Screens/STAFF/room_price/room_price.dart';
 
 import 'package:kk_conferences/Screens/SignInScreen/signin.dart';
 import 'package:kk_conferences/Screens/SignUp/admin/signup_admin.dart';
+import 'package:kk_conferences/Screens/customer_cancellation_screen/customer_cancellation_screen.dart';
 import 'package:kk_conferences/Screens/my_bookings/my_bookings.dart';
 import 'package:kk_conferences/providers/booking_screen_provider.dart';
 import 'package:kk_conferences/providers/home_screen_provider.dart';
 import 'package:kk_conferences/providers/my_booking_provider.dart';
 import 'package:kk_conferences/providers/sign_in_provider.dart';
+import 'package:kk_conferences/providers/staff/accounts_provider.dart';
 import 'package:kk_conferences/providers/staff/customer_cancellation_request_provider.dart';
 import 'package:kk_conferences/providers/staff/day_wise_provider.dart';
+import 'package:kk_conferences/providers/staff/room_price_provider.dart';
 import 'package:kk_conferences/providers/staff/sign_up_admin_provider.dart';
 import 'package:kk_conferences/utils/preference.dart';
 import 'package:kk_conferences/widgets/active_booking_items.dart';
-import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 import 'Screens/STAFF/AdminBookingScreen/day_wise_booking.dart';
+import 'Screens/STAFF/account_screen.dart';
 import 'Screens/STAFF/customer_refund_screen/customer_cancellation_request_list.dart';
 import 'Screens/customer_boooking_cancellation_screen/cancel_booking_reason_screen.dart';
 import 'utils.dart';
@@ -46,8 +49,13 @@ void main() async {
       ChangeNotifierProvider(create: (ctx) => BookingScreenProvider()),
       ChangeNotifierProvider(create: (ctx) => MyBookingProvider()),
       ChangeNotifierProvider(create: (ctx) => DayWiseProvider()),
+      ChangeNotifierProvider(create: (ctx) => RoomPriceProvider()),
       ChangeNotifierProvider<CustomerCancellationRequestProvider>.value(
-          value: CustomerCancellationRequestProvider.instance())
+          value: CustomerCancellationRequestProvider.instance()),
+      ChangeNotifierProvider<AccountProvider>.value(
+          value: AccountProvider())
+
+
     ], child: MyApp()),
   );
 }
@@ -58,8 +66,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return OverlaySupport.global(
-      child: MaterialApp(
+    return MaterialApp(
        // navigatorKey:navKey,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -86,10 +93,12 @@ class MyApp extends StatelessWidget {
           CancelBookingReason.classname: (context) => CancelBookingReason(),
           CustomerCancellationRequest.classname: (context) =>
               CustomerCancellationRequest(),
-          RoomPrice.classname : (context)=>RoomPrice()
+          RoomPrice.classname : (context)=>RoomPrice(),
+          Account.classname : (context)=>Account(),
+
+          CustomerCancellationApplication.classname:(context)=>CustomerCancellationApplication()
         },
-      ),
-    );
+      );
   }
 }
 

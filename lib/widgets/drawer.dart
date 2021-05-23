@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:kk_conferences/Screens/STAFF/account_screen.dart';
 import 'package:kk_conferences/Screens/STAFF/customer_refund_screen/customer_cancellation_request_list.dart';
 import 'package:kk_conferences/Screens/STAFF/room_price/room_price.dart';
 import 'package:kk_conferences/Screens/SignInScreen/signin.dart';
 import 'package:kk_conferences/Screens/SignUp/admin/signup_admin.dart';
-import 'package:kk_conferences/Screens/dashboard/main_page.dart';
+import 'package:kk_conferences/Screens/customer_cancellation_screen/customer_cancellation_screen.dart';
 import 'package:kk_conferences/Screens/my_bookings/my_bookings.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
 import 'package:kk_conferences/global/Global.dart';
@@ -84,6 +85,11 @@ class _CommonDrawerState extends State<CommonDrawer> {
             ListTile(
               title: Text("Cancel Bookings"),
               trailing: Icon(Icons.arrow_forward),
+              onTap: (){
+                Navigator.pushNamed(
+                    context, CustomerCancellationApplication.classname);
+
+              },
             ),
           if (Global.activeUser == ADMIN)
             ListTile(
@@ -110,7 +116,14 @@ class _CommonDrawerState extends State<CommonDrawer> {
                 Navigator.pushNamed(context, RoomPrice.classname);
               },
             ),
-
+          if (Global.activeUser == ADMIN)
+            ListTile(
+              title: Text("Accounts"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                Navigator.pushNamed(context, Account.classname);
+              },
+            ),
 
           ListTile(
             onTap: () async {

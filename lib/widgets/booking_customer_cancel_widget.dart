@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kk_conferences/global/constants.dart';
 
-class BookingCancelWidget extends StatelessWidget {
+class BookingCustomerCancelWidget extends StatelessWidget {
   String title;
   String amount;
   String start_duration;
@@ -16,7 +16,7 @@ class BookingCancelWidget extends StatelessWidget {
 
   IconData iconright;
 
-  BookingCancelWidget(
+  BookingCustomerCancelWidget(
       {this.title = "Room name",
       this.amount = "0",
       this.start_duration,
@@ -204,46 +204,12 @@ class BookingCancelWidget extends StatelessWidget {
                         width: 20,
                       ),
                     ],
-                  )
-                else if (disableapprove == true)
+                  ),
+
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 20,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          //onapprove();
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey[400],
-                          ),
-                          width: MediaQuery.of(context).size.width * .4,
-                          height: MediaQuery.of(context).size.height * 0.05,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.check, color: Colors.white),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "Approve",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 17),
-                              ),
-                              SizedBox(
-                                width: 14,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                     SizedBox(width: 20,),
                       InkWell(
                         onTap: () {
                           onrightbtncalling();
@@ -253,7 +219,7 @@ class BookingCancelWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: rightbtnColor,
                           ),
-                          width: MediaQuery.of(context).size.width * .4,
+                          width: MediaQuery.of(context).size.width * .7,
                           height: MediaQuery.of(context).size.height * 0.05,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

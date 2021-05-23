@@ -244,20 +244,18 @@ class _BookingScreenState extends State<BookingScreen> {
             ),
             Container(
               padding: EdgeInsets.only(top: 250),
-              child: Expanded(
-                child: ListView.builder(
-                  itemCount: value.todayMeetings.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: BookingItem(
-                        endTime: getDateWith12HrsFormat(value.todayMeetings[index].bookingEndTime),
-                        startTime:
-                        getDateWith12HrsFormat(value.todayMeetings[index].bookingStartTime),
-                        dateStr: value.todayMeetings[index].bookingDate,
-                      ),
-                    );
-                  },
-                ),
+              child: ListView.builder(
+                itemCount: value.todayMeetings.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: BookingItem(
+                      endTime: getDateWith12HrsFormat(value.todayMeetings[index].bookingEndTime),
+                      startTime:
+                      getDateWith12HrsFormat(value.todayMeetings[index].bookingStartTime),
+                      dateStr: value.todayMeetings[index].bookingDate,
+                    ),
+                  );
+                },
               ),
             )
           ],
