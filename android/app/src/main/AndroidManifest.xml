@@ -2,7 +2,7 @@
     package="com.org.kk_conferences">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="kk_conferences"
+        android:label="KK Conferences"
        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
 

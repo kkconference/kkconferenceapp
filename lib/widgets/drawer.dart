@@ -7,6 +7,7 @@ import 'package:kk_conferences/Screens/SignInScreen/signin.dart';
 import 'package:kk_conferences/Screens/SignUp/admin/signup_admin.dart';
 import 'package:kk_conferences/Screens/customer_cancellation_screen/customer_cancellation_screen.dart';
 import 'package:kk_conferences/Screens/my_bookings/my_bookings.dart';
+import 'package:kk_conferences/Screens/terms_and_conditions.dart';
 import 'package:kk_conferences/api/FirbaseApi.dart';
 import 'package:kk_conferences/global/Global.dart';
 import 'package:kk_conferences/global/constants.dart';
@@ -124,7 +125,13 @@ class _CommonDrawerState extends State<CommonDrawer> {
                 Navigator.pushNamed(context, Account.classname);
               },
             ),
-
+          ListTile(
+            onTap: () async {
+              Navigator.pushNamed(context, TermsAndConditions.classname);
+            },
+            title: Text("Terms and Conditions"),
+            trailing: Icon(Icons.arrow_forward),
+          ),
           ListTile(
             onTap: () async {
               Global.activeCustomer = null;

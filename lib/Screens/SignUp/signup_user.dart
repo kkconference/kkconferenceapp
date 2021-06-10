@@ -8,8 +8,11 @@ import 'package:kk_conferences/widgets/sign_up_employee_radio_set.dart';
 import 'package:kk_conferences/widgets/textformfield.dart';
 import 'package:provider/provider.dart';
 
+import '../terms_and_conditions.dart';
+
 class SignUpScreen extends StatefulWidget {
-  static const classname="/SignUpScreen";
+  static const classname = "/SignUpScreen";
+
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -24,20 +27,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    final provider=Provider.of<SignUpProvider>(context,listen: false);
-    provider.skey= new GlobalKey<ScaffoldState>();
+    final provider = Provider.of<SignUpProvider>(context, listen: false);
+    provider.skey = new GlobalKey<ScaffoldState>();
   }
+
   var provider;
+
   @override
   Widget build(BuildContext context) {
- provider=Provider.of<SignUpProvider>(context);
- provider.context=context;
+    provider = Provider.of<SignUpProvider>(context);
+    provider.context = context;
 
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     _pixelRatio = MediaQuery.of(context).devicePixelRatio;
-    _large =  ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
-    _medium =  ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
+    _large = ResponsiveWidget.isScreenLarge(_width, _pixelRatio);
+    _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
 
     return Scaffold(
       key: provider.skey,
@@ -48,13 +53,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Opacity(opacity: 0.88,child: CustomAppBar()),
+              Opacity(opacity: 0.88, child: CustomAppBar()),
               clipShape(),
               form(),
               acceptTermsTextRow(),
-              SizedBox(height: _height/35,),
+              SizedBox(
+                height: _height / 35,
+              ),
               button(),
-           //   infoTextRow(),
+              //   infoTextRow(),
 
               //signInTextRow(),
             ],
@@ -72,7 +79,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: ClipPath(
             clipper: CustomShapeClipper(),
             child: Container(
-              height: _large? _height/8 : (_medium? _height/7 : _height/6.5),
+              height: _large
+                  ? _height / 8
+                  : (_medium ? _height / 7 : _height / 6.5),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: color_grid,
@@ -86,7 +95,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: ClipPath(
             clipper: CustomShapeClipper2(),
             child: Container(
-              height: _large? _height/12 : (_medium? _height/11 : _height/10),
+              height: _large
+                  ? _height / 12
+                  : (_medium ? _height / 11 : _height / 10),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: color_grid,
@@ -110,11 +121,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             shape: BoxShape.circle,
           ),
           child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 print('Adding photo');
               },
-
-              child: Icon(Icons.add_a_photo, size: _large? 40: (_medium? 33: 31),color: Colors.orange[200],)),
+              child: Icon(
+                Icons.add_a_photo,
+                size: _large ? 40 : (_medium ? 33 : 31),
+                color: Colors.orange[200],
+              )),
         ),
 //        Positioned(
 //          top: _height/8,
@@ -141,23 +155,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget form() {
     return Container(
       margin: EdgeInsets.only(
-          left:_width/ 12.0,
-          right: _width / 12.0,
-          top: _height / 20.0),
+          left: _width / 12.0, right: _width / 12.0, top: _height / 20.0),
       child: Form(
         child: Column(
           children: <Widget>[
             firstNameTextFormField(),
             SizedBox(height: _height / 60.0),
             lastNameTextFormField(),
-            SizedBox(height: _height/ 60.0),
+            SizedBox(height: _height / 60.0),
             emailTextFormField(),
             SizedBox(height: _height / 60.0),
             phoneTextFormField(),
             SizedBox(height: _height / 60.0),
             passwordTextFormField(),
             SizedBox(height: _height / 60.0),
-
           ],
         ),
       ),
@@ -166,7 +177,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget firstNameTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context,listen: false).firstnamecontroller,
+      textEditingController: Provider.of<SignUpProvider>(context, listen: false)
+          .firstnamecontroller,
       keyboardType: TextInputType.text,
       icon: Icons.person,
       hint: "First Name",
@@ -175,7 +187,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget lastNameTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context,listen: false).lastnamecontroller,
+      textEditingController: Provider.of<SignUpProvider>(context, listen: false)
+          .lastnamecontroller,
       keyboardType: TextInputType.text,
       icon: Icons.person,
       hint: "Last Name",
@@ -184,7 +197,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget emailTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context,listen: false).emailcontroller,
+      textEditingController:
+          Provider.of<SignUpProvider>(context, listen: false).emailcontroller,
       keyboardType: TextInputType.emailAddress,
       icon: Icons.email,
       hint: "Email ID",
@@ -193,7 +207,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget phoneTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context,listen: false).phonecontroller,
+      textEditingController:
+          Provider.of<SignUpProvider>(context, listen: false).phonecontroller,
       keyboardType: TextInputType.number,
       icon: Icons.phone,
       hint: "Mobile Number",
@@ -202,7 +217,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget passwordTextFormField() {
     return CustomTextField(
-      textEditingController: Provider.of<SignUpProvider>(context,listen: false).passwordcontroller,
+      textEditingController: Provider.of<SignUpProvider>(context, listen: false)
+          .passwordcontroller,
       keyboardType: TextInputType.text,
       obscureText: true,
       icon: Icons.lock,
@@ -224,9 +240,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   checkBoxValue = newValue;
                 });
               }),
-          Text(
-            "I accept all terms and conditions",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: _large? 12: (_medium? 11: 10)),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TermsAndConditions()));
+            },
+            child: Text(
+              "I accept all terms and conditions",
+              style: TextStyle(
+                decoration: TextDecoration.underline,
+                color: Colors.deepPurple[900],
+                  fontWeight: FontWeight.w400,
+                  fontSize: _large ? 12 : (_medium ? 11 : 10)),
+            ),
           ),
         ],
       ),
@@ -237,15 +265,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return RaisedButton(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-      onPressed: (){
-        Provider.of<SignUpProvider>(context,listen: false).createUser();
-    },
+      onPressed: () {
+        Provider.of<SignUpProvider>(context, listen: false).createUser();
+      },
       textColor: Colors.white,
       padding: EdgeInsets.all(0.0),
       child: Container(
         alignment: Alignment.center,
 //        height: _height / 20,
-        width:_large? _width/4 : (_medium? _width/3.75: _width/3.5),
+        width: _large ? _width / 4 : (_medium ? _width / 3.75 : _width / 3.5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20.0)),
           gradient: LinearGradient(
@@ -253,7 +281,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
         padding: const EdgeInsets.all(12.0),
-        child: Text('SIGN UP', style: TextStyle(fontSize: _large? 14: (_medium? 12: 10)),),
+        child: Text(
+          'SIGN UP',
+          style: TextStyle(fontSize: _large ? 14 : (_medium ? 12 : 10)),
+        ),
       ),
     );
   }
@@ -266,7 +297,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         children: <Widget>[
           Text(
             "Continue Without Sign IN >>",
-            style: TextStyle(fontWeight: FontWeight.w400, fontSize: _large? 12: (_medium? 11: 10)),
+            style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: _large ? 12 : (_medium ? 11 : 10)),
           ),
         ],
       ),
@@ -317,13 +350,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
           GestureDetector(
             onTap: () {
-            //  Navigator.of(context).pop(SignInPage.classname);
+              //  Navigator.of(context).pop(SignInPage.classname);
               print("Routing to Sign up screen");
             },
             child: Text(
               "Sign in",
               style: TextStyle(
-                  fontWeight: FontWeight.w800, color: Colors.orange[200], fontSize: 19),
+                  fontWeight: FontWeight.w800,
+                  color: Colors.orange[200],
+                  fontSize: 19),
             ),
           )
         ],

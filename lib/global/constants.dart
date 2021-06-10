@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 
-const appmode=test;
+const appmode=live;
 const test="TEST";
 const live="LIVE";
 
