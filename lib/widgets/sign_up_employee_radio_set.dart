@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignUpRadioButtonAdmin extends StatefulWidget {
-  static const  String CLERK="Clerk";
+  static const  String CLERK="Operator";
   static const  String ADMIN="Admin";
   Function(String) onChange;
 

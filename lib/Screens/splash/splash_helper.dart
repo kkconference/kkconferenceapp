@@ -48,7 +48,7 @@ class SplashHelper{
     rooms.add(RoomInfo(
         roomNo:roomInfoRawDetails2.roomNo,
         name: roomInfoRawDetails2.name,
-        address: "Andheri east",
+        address: "Chruch Gate",
         price: roomInfoRawDetails2.price,
         leadImage: "assets/roomc1.jpeg",
         description: "${room2desc}",

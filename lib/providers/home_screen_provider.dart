@@ -15,7 +15,7 @@ class HomeScreenProvider extends ChangeNotifier {
     rooms.add(RoomInfo(
         roomNo: "1",
         name: "Room 1",
-        address: "Andheri east",
+        address: "Chruch Gate",
         price: 200,
         leadImage: "assets/rooma1.jpeg",
         description: "${room1desc}",
@@ -34,7 +34,7 @@ class HomeScreenProvider extends ChangeNotifier {
     rooms.add(RoomInfo(
         roomNo: "2",
         name: "Room 2",
-        address: "Andheri east",
+        address: "Chruch Gate",
         price: 400,
         leadImage: "assets/roomc1.jpeg",
         description: "${room2desc}",

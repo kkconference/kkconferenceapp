@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 
 class SignInAllUserRadioButton extends StatefulWidget {
-  static const  String CUSTOMER="Customer";
-  static const  String CLERK="Clerk";
+  static const  String CUSTOMER="User";
+  static const  String CLERK="Operator";
   static const  String ADMIN="Admin";
   Function(String) onChange;
 
